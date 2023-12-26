@@ -1,0 +1,15 @@
+{
+  "name": "nodefcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "10_fs_sync.js",
+  "scripts": {
+    "start":"nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
