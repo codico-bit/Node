@@ -9,8 +9,8 @@ const customEmitter = new EventEmitter()
 //on will listen for specific events
 //emit will emit those events
 
-customEmitter.on('response',() =>{
-    console.log(`Data Recieved`)
+customEmitter.on('response',(name, id) =>{
+    console.log(`Data Recieved user ${name} with id:${id}`)
 })
 customEmitter.on('response',() =>{
     console.log(`Some other logic here`)
@@ -20,5 +20,6 @@ customEmitter.on('response',() =>{
 })
 
 
-customEmitter.emit('response');
+customEmitter.emit('response', 'john', 34);
 //order matters, if .emit was before all the .on then we won't get any output
+
