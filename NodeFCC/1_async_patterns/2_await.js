@@ -19,8 +19,9 @@ const getText = (path) =>{
 
 const start = async() =>{
     try{
-        const first = await readFilePromise('./content/first.txt');
-        const second = await readFilePromise('./content/second.txt');
+        const first = await readFilePromise('./content/first.txt', 'utf8');
+        //if we don't add the encoding 'utf8' then we'll get the buffer output
+        const second = await readFilePromise('./content/second.txt', 'utf8');
 
         console.log(first, second);
     } catch(error) {
