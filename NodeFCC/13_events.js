@@ -19,3 +19,6 @@ customEmitter.on('response',() =>{
     console.log(`And yet another other logic here`)
 })
 
+
+customEmitter.emit('response');
+//order matters, if .emit was before all the .on then we won't get any output
