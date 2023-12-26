@@ -1,14 +1,21 @@
 const http = require('http');
 
-const {readFileSync, read} = require('fs');
+const {readFileSync} = require('fs');
 
 //get all files
 const homePage = readFileSync('./navbar-app/index.html');
 const homeStyles = readFileSync('./navbar-app/styles.css')
 const homeImage = readFileSync('./navbar-app/logo.svg')
 const homeLogic = readFileSync('./navbar-app/browser-app.js')
-//if we placed it inside the if block, then we would request it everytime
-//instead we place it here so its called only in the beginning
+/*
+by just changing the homePage to navbar-app/index.html
+the remaining requests for styling, images and logic
+get a 404 since we are always calling those on the current 
+folder via "href"
+hence we define homeStyles homeImage homeLogic manually
+as the address of those files, ie inside the navbar
+and then use those directly while using res.write
+*/
 
 const server = http.createServer((req,res)=>{
     
@@ -42,20 +49,7 @@ const server = http.createServer((req,res)=>{
         res.write('<h1>Page not found</h1>')
         res.end() 
     }
-    //status code and header (key value pair)
-    //console.log(req.method);
-    //console.log(req.url); // outputs '/contact' if we're accessing contact, '/' if nothing
-    
-    
-    /*res.write('<h1>Home Page</h1>')
-    res.end()
-    //the above is same as
-    //res.end('<h1>Home Page</h1>')*/
+
 })
 
-server.listen(5000);//listens on port 5000
-
-
-//everytime user hits the function, we have two functions, request and
-//response which we shorten and write as req and res by convention
-
+server.listen(5000);
