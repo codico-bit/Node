@@ -24,7 +24,7 @@ const start = async() =>{
         const first = await readFilePromise('./content/first.txt', 'utf8');
         //if we don't add the encoding 'utf8' then we'll get the buffer output
         const second = await readFilePromise('./content/second.txt', 'utf8');
-        await writeFilePromise('./content/result-mind-grenade.txt',`APPENDED THIS : ${first} ${second}` ) 
+        await writeFilePromise('./content/result-mind-grenade.txt',`APPENDED THIS : ${first} ${second}`, {flag: 'a'} ) 
         
         console.log(first, second);
     } catch(error) {
