@@ -12,4 +12,10 @@ const customEmitter = new EventEmitter()
 customEmitter.on('response',() =>{
     console.log(`Data Recieved`)
 })
-customEmitter.emit('response');
+customEmitter.on('response',() =>{
+    console.log(`Some other logic here`)
+})
+customEmitter.on('response',() =>{
+    console.log(`And yet another other logic here`)
+})
+
