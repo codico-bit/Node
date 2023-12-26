@@ -1,5 +1,8 @@
 const {readFile} = require('fs');
+const util = require('util');
 
+const readFilePromise = util.promisify(readFile);
+/*
 const getText = (path) =>{
     return new Promise((resolve,reject)=>{
         readFile(path, 'utf8', (err,data)=>{
@@ -10,14 +13,14 @@ const getText = (path) =>{
             }
         })
     })
-}
+}*/
 
 //getText('./content/first.txt').then(result=>console.log(result)).catch(err=>console.log(err))
 
 const start = async() =>{
     try{
-        const first = await getText('./content/first.txt');
-        const second = await getText('./content/second.txt');
+        const first = await readFilePromise('./content/first.txt');
+        const second = await readFilePromise('./content/second.txt');
 
         console.log(first, second);
     } catch(error) {
@@ -25,3 +28,4 @@ const start = async() =>{
     }
 }
 start()
+
