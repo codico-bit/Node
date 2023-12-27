@@ -4,7 +4,7 @@ const logger = require('./logger')
 // req => middleware => res
 
 
-app.use(logger)
+app.use('/api',logger)
 //app.use will invoke it for any route
 
 
