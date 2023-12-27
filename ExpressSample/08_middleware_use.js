@@ -3,9 +3,15 @@ const app = express();
 const logger = require('./logger')
 // req => middleware => res
 
-
+/*
 app.use('/api',logger)
+//app.use will invoke it for any route after /api
+*/
+app.use([logger, authorize])
 //app.use will invoke it for any route
+//now it'll invoke both of the functions before any route
+
+
 
 
 app.get('/', logger, (req,res)=>{
