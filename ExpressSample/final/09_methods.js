@@ -82,8 +82,20 @@ app.put('/api/people/:id',(req,res)=>{
  })
 
 
+//delete method is for deleting data
+app.delete('/api/people/:id', (req,res)=>{
+    const person = people.find((person)=>person.id===Number(req.params.id))
+    if(!person){
+        return res.status(404).json({success:false, msg:`no  person with id ${req.params.id}`})
+    }
+
+    const newPeople = people.filter((person)=>person.id!==Number(req.params.id));
+    return res.status(200).json({success:true, data:newPeople})
+}) 
+//in this case we aren't persisting the data so it comes back on next call
 
 app.listen(5000,()=>{
     console.log('The server is listening on 5000')
 })
+
 
