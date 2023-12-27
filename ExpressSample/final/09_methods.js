@@ -28,11 +28,26 @@ object.
 
 */
 
+//Now we use another middleware to parse .json data
+app.use(express.json())
+
+
 //get method, already used it plenty of times before this so 
 //doesn't require further explaination/examples
 app.get('/api/people',(req,res)=>{
     res.status(200).json({success:true, data:people})
 })
+
+
+app.post('/api/people', (req,res) =>{
+    const {name} = req.body
+    if(!name){
+        return res.status(400).json({success:false, msg:'please provide name value'})
+    }
+    res.status(201).json({success:true, person:name})
+})
+
+
 
 app.post('/login', (req,res) =>{
     const {name} = req.body;
@@ -47,3 +62,4 @@ app.post('/login', (req,res) =>{
 app.listen(5000,()=>{
     console.log('The server is listening on 5000')
 })
+
